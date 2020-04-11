@@ -40,6 +40,14 @@
             android:importantForAutofill="no"
             android:textSize="18sp" />
 
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="Save"/>
+
     </RelativeLayout>
 
 </ScrollView>

@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/permissions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:text="First"
-        android:textSize="36sp" />
+        android:text="Permissions"/>
 
     <Button
         android:id="@+id/newView"
@@ -20,6 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:text="Open" />
+        android:text="Open"/>
 
 </RelativeLayout>
