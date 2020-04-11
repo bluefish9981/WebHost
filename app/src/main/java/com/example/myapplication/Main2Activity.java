@@ -122,9 +122,9 @@ public class Main2Activity extends AppCompatActivity {
         if(isExternalStorageWriteable()){
             File outputDirectory = new File(defaultSaveDir);
             if(outputDirectory.exists()){
-                Toast.makeText(this, "Directory created", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Directory created", Toast.LENGTH_LONG).show();
             }else{
-                Toast.makeText(this, "Directory not created", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Directory not created", Toast.LENGTH_LONG).show();
                 outputDirectory.mkdirs();
             }
         } else {
