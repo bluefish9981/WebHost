@@ -14,8 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -37,13 +35,15 @@ public class Main2Activity extends AppCompatActivity {
     private int STORAGE_RPERMISSION_CODE = 1;
     private int STORAGE_WPERMISSION_CODE = 2;
 
-    private static final String FILE_NAME = "example.html";
+    final String externalDir = Environment.getExternalStorageDirectory().getAbsolutePath();
+    final String defaultSaveDir = externalDir + "/HTML";
 
     TextView rows;
     EditText input;
     Button save;
-    String htmlSavePath = "/storage/emulated/0/HTML";
     OutputStream outputStream;
+
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,9 @@ public class Main2Activity extends AppCompatActivity {
         rows = (TextView) findViewById(R.id.rows);
         input = (EditText) findViewById(R.id.input);
         save = (Button) findViewById(R.id.save);
+
+        TextView textView = (TextView) findViewById(R.id.textView);
+        textView.setText(defaultSaveDir);
 
         input.addTextChangedListener(new TextWatcher() {
             @Override
@@ -102,6 +105,7 @@ public class Main2Activity extends AppCompatActivity {
     public static boolean isExternalStorageMounted() {
 
         String dirState = Environment.getExternalStorageState();
+
         if(Environment.MEDIA_MOUNTED.equals(dirState))
         {
             return true;
@@ -113,19 +117,19 @@ public class Main2Activity extends AppCompatActivity {
 
     //Context context = getApplicationContext();
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void save(View v) {
         String htmlcode = input.getText().toString();
-        FileOutputStream fos = null;
         if(isExternalStorageWriteable()){
-            File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-            File file = new File(dir, "example.html");
-
-            try (FileWriter fileWriter = new FileWriter(file)) {
-                fileWriter.write(htmlcode);
-            } catch (IOException e) {}
+            File outputDirectory = new File(defaultSaveDir);
+            if(outputDirectory.exists()){
+                Toast.makeText(this, "Directory created", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "Directory not created", Toast.LENGTH_SHORT).show();
+                outputDirectory.mkdirs();
+            }
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_WPERMISSION_CODE);
+            save(null);
         }
     }
 }
