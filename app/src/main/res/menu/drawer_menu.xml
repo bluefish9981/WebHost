@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    tool:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_devinfo"
+            android:icon="@drawable/ic_info"
+            android:title="Network/Device Info" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_about"
+            android:title="About" />
+    </group>
+
+    <item android:title="Permission">
+        <menu>
+            <item
+                android:id="@+id/nav_saveper"
+                android:icon="@drawable/ic_saveper"
+                android:title="Storage Permission" />
+        </menu>
+    </item>
+
+</menu>

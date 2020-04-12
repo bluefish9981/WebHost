@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -67,8 +68,7 @@ public class Main2Activity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 int lines = input.getLineCount();
                 String lineText = "";
-                for(int z = 1; z <= lines; z++)
-                {
+                for (int z = 1; z <= lines; z++) {
                     lineText = lineText + z + "\n";
                 }
                 rows.setText(lineText);
@@ -81,13 +81,11 @@ public class Main2Activity extends AppCompatActivity {
         });
     }
 
-    private boolean isExternalStorageWriteable()
-    {
-        if(Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()))
-        {
+    private boolean isExternalStorageWriteable() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             Log.i("State", "Yes, it is writeable!");
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -99,18 +97,17 @@ public class Main2Activity extends AppCompatActivity {
             Log.i("State", "Yes, it is readable!");
             return true;
         } else {
-        return false;}
+            return false;
+        }
     }
 
     public static boolean isExternalStorageMounted() {
 
         String dirState = Environment.getExternalStorageState();
 
-        if(Environment.MEDIA_MOUNTED.equals(dirState))
-        {
+        if (Environment.MEDIA_MOUNTED.equals(dirState)) {
             return true;
-        }else
-        {
+        } else {
             return false;
         }
     }
@@ -119,11 +116,11 @@ public class Main2Activity extends AppCompatActivity {
 
     public void save(View v) {
         String htmlcode = input.getText().toString();
-        if(isExternalStorageWriteable()){
+        if (isExternalStorageWriteable()) {
             File outputDirectory = new File(defaultSaveDir);
-            if(outputDirectory.exists()){
+            if (outputDirectory.exists()) {
                 Toast.makeText(this, "Directory created", Toast.LENGTH_LONG).show();
-            }else{
+            } else {
                 Toast.makeText(this, "Directory not created", Toast.LENGTH_LONG).show();
                 outputDirectory.mkdirs();
             }

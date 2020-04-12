@@ -26,18 +26,19 @@
             android:id="@+id/input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:layout_toEndOf="@id/rows"
+            android:layout_toRightOf="@id/rows"
             android:ems="10"
             android:gravity="start|top"
+            android:hint="Type HTML Here..."
+            android:importantForAutofill="no"
             android:inputType="textMultiLine"
             android:padding="10sp"
             android:text=""
-            android:hint="Type HTML Here..."
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:importantForAutofill="no"
             android:textSize="18sp" />
 
         <Button
@@ -46,15 +47,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:text="Save"
-            android:onClick="save"/>
+            android:onClick="save"
+            android:text="Save" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:text="TextView" />
 
     </RelativeLayout>
