@@ -14,5 +14,5 @@
         android:layout_height="match_parent"
         android:gravity="bottom"
         android:text="Blank for now."
-        android:textSize="30dp"/>
+        android:textSize="30dp" />
 </LinearLayout>
