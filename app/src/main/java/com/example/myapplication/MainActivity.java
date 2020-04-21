@@ -25,13 +25,15 @@ public class MainActivity extends AppCompatActivity {
     private int STORAGE_RPERMISSION_CODE = 1;
     private int STORAGE_WPERMISSION_CODE = 2;
     private Button newView;
-    private DrawerLayout drawer;
+    private Button netInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Context context = MainActivity.this;
+        netInfo = (Button) findViewById(R.id.netInfo);
 
         Button requestPermissions = findViewById(R.id.permissions);
         requestPermissions.setOnClickListener(new View.OnClickListener() {
@@ -70,5 +72,10 @@ public class MainActivity extends AppCompatActivity {
     {
         ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, STORAGE_WPERMISSION_CODE);
         ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_RPERMISSION_CODE);
+    }
+
+    public void openNetworkPage(View view) {
+        Intent intent = new Intent(this, NetInfo.class);
+        startActivity(intent);
     }
 }

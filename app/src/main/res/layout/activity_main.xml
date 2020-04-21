@@ -36,7 +36,7 @@
             android:text="net info"
             android:layout_above="@+id/newView"
             android:layout_alignParentRight="true"
-            android:onClick="networkPage"
+            android:onClick="openNetworkPage"
             />
 
 
