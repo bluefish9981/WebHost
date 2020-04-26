@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="My_Application.app" target="1.7" />
+      <module name="My_Application.design" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

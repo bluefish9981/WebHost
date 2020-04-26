@@ -7,10 +7,9 @@
     tools:context=".NetInfo">
 
     <TextView
-        android:id="@+id/ip"
+        android:id="@+id/netInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:padding="10dp"/>
 </RelativeLayout>
