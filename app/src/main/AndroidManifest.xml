@@ -21,7 +21,11 @@
         <activity
             android:name=".NetInfo"
             android:label="Network Info"
-            android:parentActivityName=".MainActivity" />
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Help"
+            android:label="Help"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="Home"

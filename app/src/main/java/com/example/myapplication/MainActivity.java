@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private int STORAGE_RPERMISSION_CODE = 1;
     private int STORAGE_WPERMISSION_CODE = 2;
     private Button newView;
-    private Button netInfo;
     private DrawerLayout drawer;
 
 
@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final Context context = MainActivity.this;
-        netInfo = (Button) findViewById(R.id.netInfo);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,23 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        Button requestPermissions = findViewById(R.id.permissions);
-        requestPermissions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ContextCompat.checkSelfPermission(context,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-                {
-                    Toast.makeText(context, "Permission for external storage granted.", Toast.LENGTH_LONG).show();
-                }
-                else if (ContextCompat.checkSelfPermission(context,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-                {
-                    Toast.makeText(context, "Permission for external storage denied.", Toast.LENGTH_LONG).show();
-                    requestWPermission();
-                }
-            }
-        });
+        navigationView.setCheckedItem(R.id.nav_home);
 
         newView = (Button) findViewById(R.id.newView);
         newView.setOnClickListener(new View.OnClickListener() {
@@ -80,15 +63,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Context context = MainActivity.this;
         switch (item.getItemId()){
             case R.id.nav_home:
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Already on this page.", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_netInfo:
-                Toast.makeText(this, "NetInfo", Toast.LENGTH_SHORT).show();
+                openNetworkPage(null);
                 break;
             case R.id.nav_savePer:
-                Toast.makeText(this, "SavePer", Toast.LENGTH_SHORT).show();
+                if(ContextCompat.checkSelfPermission(context,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+                {
+                    Toast.makeText(context, "Permission for external storage already granted.", Toast.LENGTH_LONG).show();
+                }
+                else if (ContextCompat.checkSelfPermission(context,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+                {
+                    Toast.makeText(context, "Permission for external storage currently denied.", Toast.LENGTH_LONG).show();
+                    requestWPermission();
+                }
+                break;
+            case R.id.nav_about:
+                openHelpPage(null);
                 break;
         }
 
@@ -119,6 +116,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void openNetworkPage(View view) {
         Intent intent = new Intent(this, NetInfo.class);
+        startActivity(intent);
+    }
+
+    public void openHelpPage(View view) {
+        Intent intent = new Intent(this, Help.class);
         startActivity(intent);
     }
 }
